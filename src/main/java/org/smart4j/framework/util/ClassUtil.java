@@ -6,7 +6,14 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
+import java.net.JarURLConnection;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * 类操作工具类
@@ -29,7 +36,41 @@ public final class ClassUtil {
     }
 
     public static Set<Class<?>> getClassSet(String packageName) {
+        Set<Class<?>> classSet = new HashSet<Class<?>>();
+        try {
+            Enumeration<URL> urls = getClassLoader().getResources(packageName.replace(".", "/"));
+            while (urls.hasMoreElements()){
+                URL url = urls.nextElement();
+                if (url != null) {
+                    String protocol = url.getProtocol();
+                    if (protocol.equals("file")){
+                        String packagePath = url.getPath().replace("20%"," ");
+                        addClass(classSet,packagePath,packageName);
+                    }else if (protocol.equals("jar")){
+                        JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
+                        if (jarURLConnection != null) {
+                            JarFile jarFile = jarURLConnection.getJarFile();
+                            if (jarFile != null) {
+                                Enumeration<JarEntry> entries = jarFile.entries();
+                                while (entries.hasMoreElements()){
+                                    JarEntry jarEntry = entries.nextElement();
+                                    String jarEntryName = jarEntry.getName();
+                                    if (jarEntryName.endsWith(".class")){
+                                        String className = jarEntryName.substring(0, jarEntryName.lastIndexOf(".")).replace("/", ".");
+                                        doAddClass(classSet,className);
+                                    }
 
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void addClass(Set<Class<?>> classSet, String packagePath, String packageName) {
