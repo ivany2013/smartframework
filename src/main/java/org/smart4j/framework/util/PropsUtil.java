@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * Created by mysteel-xl on 2017/11/13.
  */
-public class PropsUtil {
+public final class PropsUtil {
 
     /**
      *  @Ps 读取配置文件
