@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ *  class与实例
  * Created by Xul on 2017/11/28.
  */
 public class BeanHelper {

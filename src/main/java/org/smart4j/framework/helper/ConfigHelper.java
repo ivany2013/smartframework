@@ -7,6 +7,7 @@ import org.smart4j.framework.util.PropsUtil;
 import java.util.Properties;
 
 /**
+ * 用于获取基本配置
  * Created by mysteel-xl on 2017/11/27.
  */
 public final class ConfigHelper {
