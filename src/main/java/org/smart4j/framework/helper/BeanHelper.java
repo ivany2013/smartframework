@@ -26,7 +26,6 @@ public class BeanHelper {
         return BEAN_MAP;
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> T getBean(Class<?> clz){
         if (!BEAN_MAP.containsKey(clz)){
             throw new RuntimeException("Can not get bean by class:"+clz);
@@ -34,5 +33,8 @@ public class BeanHelper {
         return (T) BEAN_MAP.get(clz);
     }
 
+    public static void setBean(Class<?> clazz,Object object){
+        BEAN_MAP.put(clazz,object);
+    }
 
 }
