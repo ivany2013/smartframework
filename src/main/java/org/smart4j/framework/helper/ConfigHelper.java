@@ -37,7 +37,7 @@ public final class ConfigHelper {
     public static String getJdbcJspPath(){
         String property = CONFIG_PROPS.getProperty(ConfigConstant.APP_JSP_PATH);
         if(StringUtils.isBlank(property)){
-            property = "/WEB-INF/views/";
+            property = "/WEB-INF/view/";
         }
         return property;
     }

@@ -7,6 +7,7 @@ import org.smart4j.framework.bean.Handler;
 import org.smart4j.framework.bean.Param;
 import org.smart4j.framework.bean.View;
 import org.smart4j.framework.helper.BeanHelper;
+import org.smart4j.framework.helper.ConfigHelper;
 import org.smart4j.framework.helper.ControllerHelper;
 import org.smart4j.framework.util.CodecUtil;
 import org.smart4j.framework.util.JsonUtil;
@@ -38,15 +39,17 @@ public class DispatcherServlet extends HttpServlet{
     @Override
     public void init(ServletConfig config) throws ServletException {
         //初始化相关helper类
+        System.out.println(000);
         HelperLoader.init();
         //获取ServletContext对象 用于注册Servlet
         ServletContext servletContext = config.getServletContext();
         //注册处理JSP的servlet
+        System.out.println(123);
         ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
-        jspServlet.addMapping(ConfigConstant.APP_JSP_PATH+"*");
+        jspServlet.addMapping(ConfigHelper.getJdbcJspPath()+"*");
         //注册处理静态资源的servlet
         ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
-        defaultServlet.addMapping(ConfigConstant.APP_ASSET_PATH+"*");
+        defaultServlet.addMapping(ConfigHelper.getJdbcAssetPath()+"*");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package org.smart4j.framework.helper;
 
+import org.apache.log4j.Logger;
 import org.smart4j.framework.annotation.Aspect;
 import org.smart4j.framework.annotation.Service;
 import org.smart4j.framework.proxy.Proxy;
@@ -12,7 +13,7 @@ import java.util.*;
  * Created by Xul on 2017/11/29.
  */
 public class AopHelper {
-
+    private static final Logger LOGGER =Logger.getLogger(AopHelper.class);
     /**
      *  @Description: 获取需要代理的 目标类
      *  @Date: 2017/11/29

@@ -136,7 +136,7 @@ public class DataBaseHelper {
         }
     }
 
-    /*public static <T> List<T>  queryEntityList(Class<T> entityClass,String sql, Object... param){
+    public static <T> List<T>  queryEntityList(Class<T> entityClass,String sql, Object... param){
         List<T> entityList = null;
         Connection conn = getConnection();
         try {
@@ -148,7 +148,7 @@ public class DataBaseHelper {
         }
         return entityList;
     }
-
+    /*
     public static <T> T queryEntity(Class<T> entityClass,String sql,Object... param){
         T entity = null;
         Connection con = getConnection();
