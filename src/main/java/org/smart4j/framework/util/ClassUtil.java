@@ -1,9 +1,6 @@
 package org.smart4j.framework.util;
 
 
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
@@ -14,6 +11,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 类操作工具类

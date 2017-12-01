@@ -1,22 +1,20 @@
 package org.smart4j.framework.helper;
 
-import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.smart4j.framework.ConfigConstant;
-import org.smart4j.framework.util.PropsUtil;
-import sun.security.krb5.Config;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.smart4j.framework.ConfigConstant;
+import org.smart4j.framework.util.PropsUtil;
+
 /**
  * Created by mysteel-xl on 2017/11/27.
  */
-public class DataBaseHelper {
+public class DatabaseHelper {
 
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
 

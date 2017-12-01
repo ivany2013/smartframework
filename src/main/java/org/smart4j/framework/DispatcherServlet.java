@@ -1,19 +1,11 @@
 package org.smart4j.framework;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.smart4j.framework.bean.Data;
-import org.smart4j.framework.bean.Handler;
-import org.smart4j.framework.bean.Param;
-import org.smart4j.framework.bean.View;
-import org.smart4j.framework.helper.BeanHelper;
-import org.smart4j.framework.helper.ConfigHelper;
-import org.smart4j.framework.helper.ControllerHelper;
-import org.smart4j.framework.helper.IocHelper;
-import org.smart4j.framework.util.CodecUtil;
-import org.smart4j.framework.util.JsonUtil;
-import org.smart4j.framework.util.ReflectionUtil;
-import org.smart4j.framework.util.StreamUtil;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.reflect.Method;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -24,13 +16,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.smart4j.framework.bean.Data;
+import org.smart4j.framework.bean.Handler;
+import org.smart4j.framework.bean.Param;
+import org.smart4j.framework.bean.View;
+import org.smart4j.framework.helper.BeanHelper;
+import org.smart4j.framework.helper.ConfigHelper;
+import org.smart4j.framework.helper.ControllerHelper;
+import org.smart4j.framework.util.CodecUtil;
+import org.smart4j.framework.util.JsonUtil;
+import org.smart4j.framework.util.ReflectionUtil;
+import org.smart4j.framework.util.StreamUtil;
 
 /**
  * 请求转发器
@@ -39,7 +37,12 @@ import java.util.Map;
 @WebServlet(urlPatterns = "/*",loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet{
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     public void init(ServletConfig config) throws ServletException {
         //初始化相关helper类
         System.out.println(000);

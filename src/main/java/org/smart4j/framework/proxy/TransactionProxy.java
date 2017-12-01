@@ -2,7 +2,7 @@ package org.smart4j.framework.proxy;
 
 import org.apache.log4j.Logger;
 import org.smart4j.framework.annotation.Transaction;
-import org.smart4j.framework.helper.DataBaseHelper;
+import org.smart4j.framework.helper.DatabaseHelper;
 
 import java.lang.reflect.Method;
 
@@ -27,13 +27,13 @@ public class TransactionProxy implements Proxy{
         if (!flag && targetMethod.isAnnotationPresent(Transaction.class)) {
             try {
                 FLAG_HOLDER.set(true);
-                DataBaseHelper.beginTransaciton();
+                DatabaseHelper.beginTransaciton();
                 LOGGER.debug("begin transaction");
                 result = proxyChain.doProxyChain();
-                DataBaseHelper.commitTransaction();
+                DatabaseHelper.commitTransaction();
                 LOGGER.debug("commit transaction");
             } catch (Exception e) {
-                DataBaseHelper.rollbackTransaction();
+                DatabaseHelper.rollbackTransaction();
                 LOGGER.debug("rollback transaction");
                 throw e ;
             } finally {

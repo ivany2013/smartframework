@@ -1,19 +1,22 @@
 package org.smart4j.framework.helper;
 
-import org.apache.log4j.Logger;
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.smart4j.framework.annotation.Aspect;
 import org.smart4j.framework.annotation.Service;
 import org.smart4j.framework.proxy.Proxy;
 import org.smart4j.framework.proxy.TransactionProxy;
 
-import java.lang.annotation.Annotation;
-import java.util.*;
-
 /**
  * Created by Xul on 2017/11/29.
  */
 public class AopHelper {
-    private static final Logger LOGGER =Logger.getLogger(AopHelper.class);
     /**
      *  @Description: 获取需要代理的 目标类
      *  @Date: 2017/11/29
