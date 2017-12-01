@@ -73,7 +73,7 @@ public final class ClassUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return classSet;
     }
 
     public static void addClass(Set<Class<?>> classSet, String packagePath, String packageName) {
@@ -94,7 +94,7 @@ public final class ClassUtil {
                 String subPackageName = fileName;
                 String subPackagePath = fileName;
                 if (StringUtils.isNoneBlank(packagePath)) {
-                    subPackagePath = packagePath+"."+subPackagePath;
+                    subPackagePath = packagePath+"/"+subPackagePath;
                 }
                 if (StringUtils.isNoneBlank(packageName)) {
                     subPackageName = packageName+"."+subPackageName;

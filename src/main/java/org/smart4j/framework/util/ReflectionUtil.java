@@ -26,7 +26,7 @@ public final class ReflectionUtil {
      *  @Ps 调用方法
      *  @Date 2017/11/28 10:59
      */
-    public static Object invokeMethod(Object obj, Method method,Object... param){
+    public static Object invokeMethod(Object obj, Method method,Object...param){
         Object result = null;
         try {
             result = method.invoke(obj,param);

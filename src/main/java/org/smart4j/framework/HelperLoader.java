@@ -14,12 +14,12 @@ public final class HelperLoader {
                 ClassHelper.class,
                 BeanHelper.class,
                 AopHelper.class,
-                IocHelper.class,
                 ConfigHelper.class,
-                ControllerHelper.class
+                ControllerHelper.class,
+                IocHelper.class
         };
         for (Class<?> aClass : classList) {
-            ClassUtil.loadClass(aClass.getName(),false);
+            ClassUtil.loadClass(aClass.getName(),true);
         }
     }
 }

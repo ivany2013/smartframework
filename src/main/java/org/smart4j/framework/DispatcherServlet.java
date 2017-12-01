@@ -9,6 +9,7 @@ import org.smart4j.framework.bean.View;
 import org.smart4j.framework.helper.BeanHelper;
 import org.smart4j.framework.helper.ConfigHelper;
 import org.smart4j.framework.helper.ControllerHelper;
+import org.smart4j.framework.helper.IocHelper;
 import org.smart4j.framework.util.CodecUtil;
 import org.smart4j.framework.util.JsonUtil;
 import org.smart4j.framework.util.ReflectionUtil;
@@ -22,8 +23,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -88,6 +91,7 @@ public class DispatcherServlet extends HttpServlet{
             Param param = new Param(paramMap);
             //调用action方法
             Method actionMethod = handler.getActionMethod();
+//            IocHelper.init();
             Object result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
             //处理action方法的返回值
             if (result instanceof View) {
@@ -100,8 +104,8 @@ public class DispatcherServlet extends HttpServlet{
                         Map<String, Object> model = view.getModel();
                         for (Map.Entry<String, Object> entry : model.entrySet()) {
                             req.setAttribute(entry.getKey(),entry.getValue());
-                            req.getRequestDispatcher(ConfigConstant.APP_JSP_PATH+path).forward(req,resp);
                         }
+                        req.getRequestDispatcher(ConfigHelper.getJdbcJspPath()+path).forward(req,resp);
                     }
                 }
             }else if (result instanceof Data){

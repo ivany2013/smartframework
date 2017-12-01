@@ -33,7 +33,7 @@ public class DataBaseHelper {
     static {
         Properties properties = PropsUtil.loadProps(ConfigConstant.CONFIG_FILE);
         DRIVER = properties.getProperty(ConfigConstant.JDBC_DRIVER);
-        URL = properties.getProperty(ConfigConstant.JDBC_DRIVER);
+        URL = properties.getProperty(ConfigConstant.JDBC_URL);
         USERNAME = properties.getProperty(ConfigConstant.JDBC_USERNAME);
         PASSWORD = properties.getProperty(ConfigConstant.JDBC_PASSWORD);
 

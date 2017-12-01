@@ -34,4 +34,7 @@ public final class IocHelper {
         }
 
     }
+
+	public static void init() {
+	}
 }
