@@ -32,7 +32,7 @@ public final class ClassHelper {
      *  @Ps 获取应用下某类的所有子类
      *  @Date 2017/11/28 10:44
      */
-    public static Set<Class<?>> getClassSetBySupClass(Class<?> supClass){
+    static Set<Class<?>> getClassSetBySupClass(Class<?> supClass){
         Set<Class<?>> classSet = new HashSet<Class<?>>();
         for (Class<?> aClass : CLASS_SET) {
             if (supClass.isAssignableFrom(aClass) && !supClass.equals(aClass)){

@@ -15,7 +15,8 @@ public final class HelperLoader {
                 BeanHelper.class,
                 AopHelper.class,
                 IocHelper.class,
-                ControllerHelper.class
+                ControllerHelper.class,
+                DataBaseHelper.class
         };
         for (Class<?> aClass : classList) {
             ClassUtil.loadClass(aClass.getName(),false);

@@ -1,7 +1,9 @@
 package org.smart4j.framework.helper;
 
 import org.smart4j.framework.annotation.Aspect;
+import org.smart4j.framework.annotation.Service;
 import org.smart4j.framework.proxy.Proxy;
+import org.smart4j.framework.proxy.TransactionProxy;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -29,6 +31,11 @@ public class AopHelper {
      */
     public static Map<Class<?>,Set<Class<?>>> createProxyMap(){
         Map<Class<?>,Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
+        addAspectMap(proxyMap);
+        return proxyMap;
+    }
+
+    public static void addAspectMap(Map<Class<?>,Set<Class<?>>> proxyMap){
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySupClass(Aspect.class);
         for (Class<?> aClass : proxyClassSet) {
             if (aClass.isAnnotationPresent(Aspect.class)){
@@ -37,7 +44,11 @@ public class AopHelper {
                 proxyMap.put(aClass,targetClassSet);
             }
         }
-        return proxyMap;
+    }
+
+    public static void addTransactionMap(Map<Class<?>,Set<Class<?>>> proxyMap){
+        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySupClass(Service.class);
+        proxyMap.put(TransactionProxy.class,proxyClassSet);
     }
     /**
      *  @Description:   key = 目标类； value = 目标类对应的切面实例的集合

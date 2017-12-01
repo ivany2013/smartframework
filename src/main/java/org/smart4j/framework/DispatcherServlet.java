@@ -56,7 +56,7 @@ public class DispatcherServlet extends HttpServlet{
         String requestPath = req.getPathInfo();
         //获取action处理器
         Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
-        if (handler == null) {
+        if (handler != null) {
             //获取controller类和实例
             Class<?> controllerClass = handler.getControllerClass();
             Object controllerBean = BeanHelper.getBean(controllerClass);
@@ -114,6 +114,7 @@ public class DispatcherServlet extends HttpServlet{
                     writer.close();
                 }
             }
+
         }
 
 

@@ -24,7 +24,7 @@ public final class IocHelper {
                         if (field.isAnnotationPresent(Inject.class)) {
                             Class<?> type = field.getType();
                             Object beanFieldInstance = beanMap.get(type);
-                            if (beanFieldInstance == null) {
+                            if (beanFieldInstance != null) {
                                 ReflectionUtil.setField(beanInstance,field,beanFieldInstance);
                             }
                         }
