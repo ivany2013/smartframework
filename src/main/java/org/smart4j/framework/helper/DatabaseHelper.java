@@ -146,6 +146,17 @@ public class DatabaseHelper {
         }
         return entityList;
     }
+    
+    public static int exUpdate(String sql,Object... param){
+        int rows = 0;
+        Connection con = getConnection();
+        try {
+            rows = QUERY_RUNNER.update(con,sql,param);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rows;
+    }
     /*
     public static <T> T queryEntity(Class<T> entityClass,String sql,Object... param){
         T entity = null;
@@ -158,19 +169,8 @@ public class DatabaseHelper {
             closeConneciton();
         }
         return entity;
-    }
-
-    public static int exUpdate(String sql,Object... param){
-        int rows = 0;
-        Connection con = getConnection();
-        try {
-            rows = QUERY_RUNNER.update(con,sql,param);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            closeConneciton();
-        }
-        return rows;
     }*/
+
+    
 
 }
