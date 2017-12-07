@@ -94,8 +94,12 @@ public class DispatcherServlet extends HttpServlet{
             Param param = new Param(paramMap);
             //调用action方法
             Method actionMethod = handler.getActionMethod();
-//            IocHelper.init();
-            Object result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+            Object result;
+            if (param.isEmpty()){
+                result = ReflectionUtil.invokeMethod(controllerBean, actionMethod);
+            }else{
+                result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+            }
             //处理action方法的返回值
             if (result instanceof View) {
                 View view = (View) result;

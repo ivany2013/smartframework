@@ -1,5 +1,9 @@
 package org.smart4j.framework.bean;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
+
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -20,4 +24,7 @@ public class Param {
         return (String) paramMap.get(name);
     }
 
+    public boolean isEmpty(){
+        return MapUtils.isEmpty(paramMap);
+    }
 }
